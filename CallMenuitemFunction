@@ -1,0 +1,15 @@
+static server void Callbutton(Args _args)
+{
+    container ret;
+
+    new RunAsPermission('testax').assert();
+
+    ret = runAs('testax', classNum(Global), 'hasMenuItemAccess', [menuitemActionStr(PurchFormLetter_Confirm), MenuItemType::Action]);
+
+    if(ret)
+        info("YES");
+    else
+        info("No");
+
+    CodeAccessPermission::revertAssert();
+}
